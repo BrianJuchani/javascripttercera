@@ -63,7 +63,7 @@ generarEnElHtml()
 function llevarAlCarrito(){
     for(const btn of botom ){
         btn.addEventListener('click',()=>{
-            if(btn.value >0 && btn.value < 5){
+            if(btn.value >0 && btn.value <= 5){
                 let busca=btn.value
                 let encuentra=dbproductos.find((Producto)=>{
                     return Producto.id==busca
