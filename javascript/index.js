@@ -1,5 +1,5 @@
-let productos=[];
-let carrito=[];
+
+let carrito= JSON.parse(localStorage.getItem("prendas"))||[];
 
 
 
@@ -37,26 +37,11 @@ const dbproductos=[
 
 ]
 
-class Producto{
-    constructor(id,name,price,img){
-        this.id=id
-        this.name=name
-        this.price=price
-        this.img=img
-    }
-}
 
 
-function generar(){
-    for(const element of dbproductos){
-        productos.push(new Producto(element.id,element.name,element.price,element.img))
-    }
-}
-generar();
-console.log(productos)
 
 function generarEnElHtml(){
-    productos.forEach((Producto)=>{
+    dbproductos.forEach((Producto)=>{
         let template=`
         <div class="productos card"  style="width: 18rem;">
         <img src="${Producto.img}" class="card-img-top" alt="...">
@@ -80,7 +65,7 @@ function llevarAlCarrito(){
         btn.addEventListener('click',()=>{
             if(btn.value >0 && btn.value < 5){
                 let busca=btn.value
-                let encuentra=productos.find((Producto)=>{
+                let encuentra=dbproductos.find((Producto)=>{
                     return Producto.id==busca
                 })
                 carrito.push(encuentra)
@@ -89,9 +74,13 @@ function llevarAlCarrito(){
         })
     }
 }
+console.log(carrito)
 
 llevarAlCarrito()
-console.log(carrito)
+
+
+
+
 
 
 

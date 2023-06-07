@@ -1,5 +1,5 @@
 
-let carritoActual=[]
+
 
 function vender(){
     if(localStorage.getItem('prendas')!==null)
@@ -17,7 +17,8 @@ function vender(){
             <div class="card-body">
             <h5 class="name_carrito card-title">${producto.name}</h5>
             <p class="precio_carrito card-text">${producto.price}</p>
-            <a href="#" id="eliminarDelCarrito" class="btn_eliminar btn-primary" >eliminar del carrito</a>
+            <p class="btnEliminar">${producto.id}</p>
+            <a href="#" id="eliminarDelCarrito" class="btn_eliminar btn-primary" value="${producto.id}" >eliminar del carrito</a>
             <p class="card-text"><small class="text-muted"></small></p>
             </div>
             </div>
@@ -37,12 +38,10 @@ function vender(){
         <div>
         `
         document.getElementById("total").innerHTML +=template
-    }    
+    }  
 }
-
+vender()
 const carrito=JSON.parse(localStorage.getItem('carrito'))
 
-vender()
-const eliminar= document.getElementById('eliminarDelCarrito')
-
+const btn_eliminar=document.getElementsByClassName('btn_eliminar')
 

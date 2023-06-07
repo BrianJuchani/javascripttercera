@@ -34,11 +34,11 @@ function vereficar(){
     }
     if(nombre===""||apellido===""||Gmail===""||edad==0){
         alert('completa los espacios vacios');
-    }
-
+    }else{
     datos.push(info)
     localStorage.setItem('informacion del usuario',JSON.stringify(datos))
     button_disable.classList.remove('disable')
+    }
 }
 console.log(datos)
 
