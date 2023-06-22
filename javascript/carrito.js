@@ -50,8 +50,9 @@ function vender(){
     
 }
 vender()
-
 //eliminar los productos del localstorage
+
+
 
 function eliminar(id){
     const producto=carrito.find ((producto)=>producto.id==id);
@@ -59,6 +60,7 @@ function eliminar(id){
     localStorage.setItem('prendas',JSON.stringify(carrito))
     verCarrito()
 }
+
 
 
 //ver carrito cuando eliminas los productos de manera visual
@@ -80,21 +82,17 @@ verCarrito()
 
 
 function comprarTodoDelCarrito(){
-    if(carrito.forEach = 0){
-        alert('no hay nada en el carrito')
-    }else{
-        const carritoContainer=document.getElementById('guardado')
-        carritoContainer.innerHTML='';
-        carrito.length=0;
-        localStorage.removeItem('prendas');
-        document.getElementById("total").innerHTML="";
-        alert('su compra fue un exito')   
-        vender();
-    }
-
-
-
-    
+    const carritoContainer=document.getElementById('guardado')
+    carritoContainer.innerHTML='';
+    carrito.length=0;
+    localStorage.removeItem('prendas');
+    document.getElementById("total").innerHTML="";
+    Swal.fire(
+        'Compra Exitosa',
+        'Vuelva Pronto',
+        'success'
+    ) 
+    vender();
 }
 
 const comprarTodo=document.getElementById('ComprarTodo')
