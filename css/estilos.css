@@ -159,3 +159,10 @@ body{
     background-color: wheat;
     border: 5px solid wheat;
 }
+
+.pronto{
+    margin-top: 100px;
+    margin-bottom: 100px;
+    display: flex;
+    justify-content: space-around;
+}

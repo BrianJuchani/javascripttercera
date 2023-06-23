@@ -1,5 +1,5 @@
 const carrito=JSON.parse(localStorage.getItem('prendas'))
-
+// let carrito= JSON.parse(localStorage.getItem("prendas"))||[];
 
 function vender(){
     if(localStorage.getItem('prendas')!==null){
@@ -97,8 +97,6 @@ function comprarTodoDelCarrito(){
 
 const comprarTodo=document.getElementById('ComprarTodo')
 comprarTodo.addEventListener('click',comprarTodoDelCarrito)
-
-
 
 
 

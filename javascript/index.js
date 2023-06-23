@@ -1,32 +1,37 @@
 
 let carrito= JSON.parse(localStorage.getItem("prendas"))||[];
+let proximamente=JSON.parse(localStorage.getItem("proximo"))||[];
+
+const proximado=[];
+
+
 const dbproductos=[
     {
-        id:3,
+        id:1,
         name:"remera termica",
         price:2500,
         img:"../img/termico remera.jpg",
     },
     {
-        id:4,
+        id:2,
         name:"pantalon",
         price:3000,
         img:"../img/pantalon.webp",
     },
     { 
-        id:5,
+        id:3,
         name:"short",
         price:2500,
         img:"../img/short.jpg",
     },
     {
-        id:6,
+        id:4,
         name:"zapatilla",
         price:5000,
         img:"../img/zapatilla.jpg",
     },
     {
-        id:7,
+        id:5,
         name:"buzo",
         price:3500,
         img:"../img/buzo.jpg",
@@ -34,7 +39,25 @@ const dbproductos=[
 
 ]
 
+function generarProximamenteHtml(){
+    proximado.forEach((pronto)=>{
+        let template=`
+        <div class="pronto card"  style="width: 18rem;">
+         <img src="${pronto.img}" class="card-img-top" alt="...">
+        <div class="card-body">
+         <h5 class=" card-title">${pronto.name}</h5>
+        <p class="card-text">$${pronto.price}</p>
+        <button class="btn añadir "value"${pronto.id}
+        <a href="#" class="añadir btn btn-primary" value="${pronto.id}">proximamente</a>
+        </div>
+        </div>
+        
+        `
+        document.getElementById("prontazo").innerHTML+=template
+        localStorage.setItem('proximo',JSON.stringify(proximamente))
+    })
 
+}
 
 
 function generarEnElHtml(){
@@ -51,20 +74,20 @@ function generarEnElHtml(){
         </div>
         `
         document.getElementById("venta").innerHTML +=template
+
     })
 }
 const botom=document.getElementsByClassName("añadir")
 
 
-//saque esto para que no se repita los productos
-// generarEnElHtml()
+generarEnElHtml()
 
 
 
 function llevarAlCarrito(){
     for(const btn of botom ){
         btn.addEventListener('click',()=>{
-            if(btn.value >0 && btn.value <= 7){
+            if(btn.value >0 && btn.value <=5){
                 let busca=btn.value
                 let encuentra=dbproductos.find((Producto)=>{
                     return Producto.id==busca
@@ -92,14 +115,15 @@ function mockAPI(){
     fetch(urlPrendas)
     .then((res)=>res.json())
     .then((data)=>{
-        data.forEach((carrito)=>{
-            dbproductos.push(carrito)
-        })
-        carrito.push(data)
-        generarEnElHtml()
+        data.forEach((proximamente)=>{
+            proximado.push(proximamente)
+        })    
+        proximamente.push(data)
+        generarProximamenteHtml()
+
     })    
 }
-console.log(dbproductos)
+console.log(proximamente)
 
 
 
